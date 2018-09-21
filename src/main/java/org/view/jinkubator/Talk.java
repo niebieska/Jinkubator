@@ -1,22 +1,35 @@
 package org.view.jinkubator;
 
-import org.hibernate.annotations.GenericGenerator;
+//import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
 public class Talk {
-    @Id
-    @GeneratedValue(generator="system-uuid") /*In many tries this method was the most effective ones, I haven't already found better method*/
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-       private String id;
 
+
+    @Id
+    @GeneratedValue
+    private Long id;
     private  String topic;
 
-    public String getId() {
+    public Long getId(){
         return id;
     }
     public String getTopic() {
         return topic;
     }
 }
+
+ /* The implementation for String value of id in JPA.
+     It is possible to do it easier so this code is a comment only
+    @Id
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    private String id;
+    public String getId() {
+            return id;
+    }
+
+   Jpa - recommended id type is Long
+ * MongoDb - require String - generating random chars*/
